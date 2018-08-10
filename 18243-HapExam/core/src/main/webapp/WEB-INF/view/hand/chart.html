@@ -1,0 +1,392 @@
+<#include "../include/header.html">
+<script src="${base.contextPath}/resources/js/echarts.js"></script>
+<body>
+<style>
+    #main1{
+
+        width: 500px;
+
+        height: 450px;
+
+
+
+        float: left;
+
+    }
+    #main2{
+
+        width: 500px;
+
+        height: 450px;
+
+
+
+        float: left;
+
+    }
+
+    #main3{
+
+        width: 500px;
+
+        height: 450px;
+
+        float: left;
+
+        clear: left;
+
+    }
+
+    #main4{
+
+        width: 500px;
+
+        height: 450px;
+
+
+
+        float: left;
+
+    }
+
+</style>
+<div id="shang">
+<div id="main1"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main1'));
+    option = {
+        backgroundColor: '#2c343c',
+
+        title: {
+            text: '物料占比统计分析',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+
+        visualMap: {
+            show: false,
+            min: 80,
+            max: 600,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+        series : [
+            {
+                name:'访问来源',
+                type:'pie',
+                radius : '55%',
+                center: ['50%', '50%'],
+                data:[
+                    {value:335, name:'HFM财务管理软件'},
+                    {value:310, name:'HWMS仓储管理系统'},
+                    {value:274, name:'HAP应用开发平台'},
+                    {value:235, name:'HEC费用控制系统'},
+                    {value:400, name:'HFS财务共享系统'}
+                ].sort(function (a, b) { return a.value - b.value; }),
+                roseType: 'radius',
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        },
+                        smooth: 0.2,
+                        length: 10,
+                        length2: 20
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#c23531',
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
+                }
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+<div id="main2"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main2'));
+    option = {
+        /*title: {
+            text: '物料销售走势'
+        },*/
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data:['HFM财务管理软件','HWMS仓储管理系统','HAP应用开发平台','HEC费用控制系统','HFS财务共享系统']
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : ['一月','二月','三月','四月','五月','六月']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'HFM财务管理软件',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[12, 13, 10, 13, 9, 23]
+            },
+            {
+                name:'HWMS仓储管理系统',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[22, 18, 19, 23, 29, 33]
+            },
+            {
+                name:'HAP应用开发平台',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[15, 23, 20, 15, 19, 33]
+            },
+            {
+                name:'HEC费用控制系统',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[12, 13, 10, 13, 19, 13]
+            },
+            {
+                name:'HFS财务共享系统',
+                type:'line',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
+                },
+                areaStyle: {normal: {}},
+                data:[22, 23, 20, 23, 12, 23]
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+</script>
+
+    <div id="main3"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main3'));
+
+        option = {
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data: ['汉得信息', '汉得教育','汉得保理','随身科技','夏尔科技']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis:  {
+                type: 'value'
+            },
+            yAxis: {
+                type: 'category',
+                data: ['HFM财务管理软件','HWMS仓储管理系统','HAP应用开发平台','HEC费用控制系统','HFS财务共享系统']
+            },
+            series: [
+                {
+                    name: '汉得信息',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [120, 135, 120, 100, 170]
+                },
+                {
+                    name: '汉得教育',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [30, 45, 24, 25, 35]
+                },
+                {
+                    name: '汉得保理',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [40, 60, 40, 25, 56]
+                },
+                {
+                    name: '随身科技',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [55, 40, 40, 40, 60]
+                },
+                {
+                    name: '夏尔科技',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [90, 40, 50, 45, 80]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</div>
+<div id="main4"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main4'));
+    option = {
+        backgroundColor: '#2c343c',
+
+        title: {
+            text: '公司份额统计分析',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+
+        visualMap: {
+            show: false,
+            min: 80,
+            max: 600,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+        series : [
+            {
+                name:'访问来源',
+                type:'pie',
+                radius : '55%',
+                center: ['50%', '50%'],
+                data:[
+
+                    {value:200, name:'汉得教育'},
+                    {value:284, name:'汉得保理'},
+                    {value:245, name:'随身科技'},
+                    {value:350, name:'夏尔科技'},
+                    {value:495, name:'汉得信息'},
+                ].sort(function (a, b) { return a.value - b.value; }),
+                roseType: 'radius',
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        },
+                        smooth: 0.2,
+                        length: 10,
+                        length2: 20
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#c23531',
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
+                }
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>
